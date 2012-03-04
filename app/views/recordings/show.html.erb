@@ -1,0 +1,22 @@
+<h1>Recording</h1>
+
+<p>
+  <b>Artist</b><br>
+  <%= @recording.artist %>
+</p>
+
+<p>
+  <b>Title</b><br>
+  <%= @recording.title %>
+</p>
+
+<p>
+  <b>Published</b><br>
+  <%= @recording.published %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', recordings_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_recording_path(@recording), :class => 'btn' %>
+  <%= link_to 'Delete', recording_path(@recording), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

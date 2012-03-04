@@ -1,0 +1,26 @@
+<h1>Recordings</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th>Title</th>
+      <th>Published</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recordings.each do |recording| %>
+      <tr>
+        <td><%= link_to recording.artist, recording_path(recording) %></td>
+        <td><%= recording.title %></td>
+        <td><%= recording.published %></td>
+        <td>
+          <%= link_to 'Edit', edit_recording_path(recording), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', recording_path(recording), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_recording_path, :class => 'btn btn-primary' %>

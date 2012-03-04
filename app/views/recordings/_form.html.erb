@@ -1,0 +1,31 @@
+<%= form_for @recording, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Recording</legend>
+
+    <div class="control-group">
+      <%= f.label :artist, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :artist, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :title, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :title, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :published, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.date_select :published, :class => 'date_select', :start_year => 1900 %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', recordings_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>
