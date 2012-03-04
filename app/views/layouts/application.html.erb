@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+	<%= render :partial => "shared/flash_messages", :locals => {:flash => flash} %> 
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -26,6 +27,14 @@
 						<li><%= link_to "Price List" %></li>
 						<li><%= link_to "Contact Us" %></li>
 						<li><%= link_to "Cart" %></li>
+
+						<li>
+							<% if current_user %>
+							Welcome <%= current_user.name %>! <%= link_to "Sign Out", signout_path %>
+							<% else %>
+							<%= link_to "Sign in with Twitter", "/auth/twitter" %>
+							<% end %>
+						</li>
 					</ul>
 				</div>
 			</div>
