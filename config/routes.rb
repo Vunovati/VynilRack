@@ -1,10 +1,12 @@
 VynilRack::Application.routes.draw do
-  root :to => "recordings#index"
+  root to: "Sessions#new"
 
   match "/auth/:provider/callback" => "sessions#create"
+  match "/auth/failure", to: "sessions#failure"
   match "/signout" => "sessions#destroy", :as => :signout
 
   resources :recordings
+  resources :identities
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -24,8 +24,18 @@ end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
+group :test, :development do 
+	# gem 'turn' # pretty printing
+	gem 'rspec-rails'
+	gem 'capybara' # simulates the user
+	gem 'guard-rspec'
+	gem 'minitest'
+	gem 'rb-fsevent'
+end
+
+	
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
@@ -39,5 +49,6 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'omniauth-twitter'
-# gem 'omniauth-facebook'
-# gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-identity'
