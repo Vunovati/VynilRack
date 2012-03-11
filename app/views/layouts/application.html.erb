@@ -26,12 +26,23 @@
 						<li><%= link_to "Price List" %></li>
 						<li><%= link_to "Contact Us" %></li>
 						<li><%= link_to "Cart" %></li>
-						<li class="divider-vertical"></li>
-						<li>
+						<li class="dropdown">
+					</ul>
+					<ul class="nav pull-right">
 							<% if current_user %>
-							<%= link_to "Sign Out: #{current_user.name}", signout_path, :class => "label label-info"%>
+							<li>
+									<%= link_to "Sign Out: #{current_user.name}", signout_path%>
+							</li>
 							<% else %>
-							<%= link_to "Sign in with Twitter", "/auth/twitter" %>
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+									Sign in
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<%= render "shared/external_signin_text" %>
+								</ul>
+							</li>
 							<% end %>
 						</li>
 					</ul>
@@ -47,7 +58,6 @@
 				<%= yield %>
 			</div>
 			<div class="span3">
-				<h2>About us</h2>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo

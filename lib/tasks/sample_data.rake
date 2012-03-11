@@ -4,7 +4,8 @@ namespace :db do
 		Rake::Task['db:reset'].invoke
 		Recording.create!(:artist => "Led Zeppelin",
 			:title => "Houses of The Holy",
-			:published => Time.now)
+			:published => Time.now,
+			:user_id => 1)
 
 		99.times do |n|
 			artist = Faker::Name.name
@@ -12,7 +13,8 @@ namespace :db do
 			published = n.years.ago
 			Recording.create!(:artist => artist,
 				:title => title,
-				:published => published)
+				:published => published,
+				:user_id => 1)
 		end
 	end
 end

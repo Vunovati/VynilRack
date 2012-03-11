@@ -5,6 +5,7 @@ VynilRack::Application.routes.draw do
   match "/auth/failure", to: "sessions#failure"
   match "/signout" => "sessions#destroy", :as => :signout
 
+  resources :users
   resources :recordings
   resources :identities
 

@@ -1,4 +1,6 @@
 class Recording < ActiveRecord::Base
+	belongs_to :user
+	
 	validates_presence_of :artist, :title 
 
 	self.per_page = 10 # number of recorings paginated
@@ -23,5 +25,6 @@ end
 #  published  :date
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  user_id    :integer
 #
 

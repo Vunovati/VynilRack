@@ -14,46 +14,41 @@
 </p>
 <p><%= link_to "Log out", signout_path %></p>
 <% else %>
-<h1>Sign In</h1>
-
-<p><strong>Sign in through one of these services:</strong></p>
-
-<div class="auth_providers">
-  <a href="/auth/twitter" class="auth_provider">
-    <%= image_tag "twitter_64.png", size: "64x64", alt: "Twitter" %>
-    Twitter
-  </a>
-  <a href="/auth/facebook" class="auth_provider">
-    <%= image_tag "facebook_64.png", size: "64x64", alt: "Facebook" %>
-    Facebook
-  </a>
-  <a href="/auth/google_apps" class="auth_provider">
-    <%= image_tag "google_apps_64.png", size: "64x64", alt: "Google" %>
-    Google
-  </a>
+<div class="page-header">
+  <h1>Sign In</h1>
 </div>
 
-<p>
-  <strong>Don't use these services?</strong>
-  <%= link_to "Create an account", new_identity_path %> or login below.
-</p>
-<br>
-<%= form_tag "/auth/identity/callback", :html => {:class => 'form-horizontal'} do %>
-<div class="control-group">
-  <%= label_tag :auth_key, "Email", :class => 'control-label' %>
-  <div class="controls">
-    <%= text_field_tag :auth_key, nil, :class => 'text_field' %>
+
+<div class="hero-unit">
+  <ul class="well thumbnails">
+    <%= render "shared/external_signin" %>
+  </ul>
+  <br>
+  <p class="pull-right">
+    <strong>Don't use these services?</strong>
+    <%= link_to "Create an account", new_identity_path %> or login below.
+  </p>
+</div>
+
+<div class="well form"> 
+  <%= form_tag "/auth/identity/callback", :html => {:class => 'form'} do %>
+  <div class="control-group">
+    <%= label_tag :auth_key, "Email", :class => 'control-label' %>
+    <div class="controls">
+      <%= text_field_tag :auth_key, nil, :class => 'text_field' %>
+    </div>
   </div>
-</div>
 
-<div class="control-group">
-  <div class="controls">
-    <%= label_tag :password, "Password", :class => 'control' %>
-    <%= password_field_tag :password, nil, :class => 'control' %>
+  <div class="control-group">
+    <div class="controls">
+      <%= label_tag :password, "Password", :class => 'control' %>
+      <%= password_field_tag :password, nil, :class => 'control' %>
+    </div>
   </div>
-</div>
 
-<div class="form-actions">
-  <%= submit_tag "Login", :class => 'btn' %></div>
-<% end %>
+  <div class="form-actions">
+    <%= submit_tag "Login", :class => 'btn' %>
+  </div>
+  <% end %>
+</div>
 <% end %>

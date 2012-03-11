@@ -9,21 +9,23 @@
   </ul>
 </div>
 <% end %>
-<div class="field">
-  <%= label_tag :name %><br>
-  <%= text_field_tag :name, @identity.try(:name) %>
+<div class="well form">
+<div class="controls">
+  <%= label_tag :name, "Name", :class => 'control'%>
+  <%= text_field_tag :name, @identity.try(:name), :class => 'control' %>
 </div>
-<div class="field">
-  <%= label_tag :email %><br>
-  <%= text_field_tag :email, @identity.try(:email) %>
+<div class="controls">
+  <%= label_tag :email, "Email", :class => 'control' %>
+  <%= text_field_tag :email, @identity.try(:email), :class => 'control' %>
 </div>
-<div class="field">
-  <%= label_tag :password %><br>
-  <%= password_field_tag :password %>
+<div class="controls">
+  <%= label_tag :password, "Password", :class => 'control' %>
+  <%= password_field_tag :password, nil, :class => 'control' %>
 </div>
-<div class="field">
-  <%= label_tag :password_confirmation %><br>
-  <%= password_field_tag :password_confirmation %>
+<div class="controls">
+  <%= label_tag :password_confirmation, "Password confirmation",:class => 'control'%>
+  <%= password_field_tag :password_confirmation, nil, :class => 'control' %>
 </div>
-<div class="action"><%= submit_tag "Register" %></div>
+<div class="form-actions"><%= submit_tag "Register", :class => "btn" %></div>
+</div>
 <% end %>
