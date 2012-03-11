@@ -1,9 +1,10 @@
 class RecordingsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   # GET /recordings
   # GET /recordings.json
   def index
-    @recordings = Recording.all
-
+    @recordings = Recording.search(params[:search]).order(sort_column + ' '  + sort_direction).paginate(:page => params[:page]) 
+    #@recordings_found = Recording.where(:title.matches => "%#{params[:search]}")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @recordings }
@@ -60,10 +61,10 @@ class RecordingsController < ApplicationController
 
     respond_to do |format|
       if @recording.update_attributes(params[:recording])
-        format.html { redirect_to @recording, notice: 'Recording was successfully updated.' }
+        format.html { redirect_to @recording, :notice => 'Recording was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to edit_recording_path(@recording), :notice => 'An error occured, Artist and Title must be entered' }
         format.json { render json: @recording.errors, status: :unprocessable_entity }
       end
     end
@@ -76,8 +77,17 @@ class RecordingsController < ApplicationController
     @recording.destroy
 
     respond_to do |format|
-      format.html { redirect_to recordings_url }
+      format.html { redirect_to recordings_url, :notice => @recording.artist + " " + @recording.title + " deleted" }
       format.json { head :no_content }
     end
+  end
+
+  private 
+  def sort_column
+    Recording.column_names.include?(params[:sort]) ? params[:sort] : "artist"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

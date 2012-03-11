@@ -7,4 +7,10 @@ module ApplicationHelper
     when :alert then "alert alert-error"
     end
   end
+  def sortable(column, title = nil)
+  	title ||= column.titleize
+  	css_class = (column == sort_column) ? "label label-info": nil  
+  	direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+	link_to title, {:sort => column, :direction => direction}, {:class => css_class}  	
+  end
 end

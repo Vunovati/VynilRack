@@ -11,7 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<%= render :partial => "shared/flash_messages", :locals => {:flash => flash} %> 
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -29,11 +28,11 @@
 						<li><%= link_to "Cart" %></li>
 						<li class="divider-vertical"></li>
 						<li>
-						<% if current_user %>
+							<% if current_user %>
 							<%= link_to "Sign Out: #{current_user.name}", signout_path, :class => "label label-info"%>
 							<% else %>
 							<%= link_to "Sign in with Twitter", "/auth/twitter" %>
-						<% end %>
+							<% end %>
 						</li>
 					</ul>
 				</div>
@@ -44,6 +43,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="span9">
+				<%= render :partial => "shared/flash_messages", :locals => {:flash => flash} %> 
 				<%= yield %>
 			</div>
 			<div class="span3">

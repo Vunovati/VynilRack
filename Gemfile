@@ -22,7 +22,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'bootstrap-will_paginate'
+gem 'thinking-sphinx'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -33,6 +34,9 @@ group :test, :development do
 	gem 'guard-rspec'
 	gem 'minitest'
 	gem 'rb-fsevent'
+	gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
+	gem 'launchy'
+	gem 'faker'
 end
 
 	

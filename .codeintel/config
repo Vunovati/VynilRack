@@ -1,6 +1,6 @@
 {   
 "Ruby": {
 "ruby": "/home/evlaada/.rvm/rubies/ruby-1.9.2-p290/bin/ruby",
-"rubyExtraPaths": [.]
+"rubyExtraPaths": [~/Programming/ruby/VynilRack rails c]
 }  
 }
