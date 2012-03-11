@@ -5,7 +5,7 @@ class Recording < ActiveRecord::Base
 
 	def self.search(search)
 		if search
-			where('title LIKE ?', "%#{search}")
+			where('artist LIKE ?', "%#{search}")
 		else
 			scoped # give all instead of searching
 		end

@@ -11,28 +11,6 @@
 </p>
 <% end %>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= sortable "artist" %></th>
-      <th><%= sortable "title" %></th>
-      <th><%= sortable "published" %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @recordings.each do |recording| %>
-    <tr>
-      <td><%= link_to recording.artist, recording_path(recording) %></td>
-      <td><%= recording.title %></td>
-      <td><%= recording.published %></td>
-      <td id ="recording_<%= recording.id %>" >
-        <%= link_to 'Edit', edit_recording_path(recording), :class => 'btn btn-mini' %>
-        <%= link_to 'Destroy', recording_path(recording), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger'%>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= will_paginate @recordings %>
+<%= render 'shared/recordings_index' %>
 
 <%= link_to 'New', new_recording_path, :class => 'btn btn-primary' %>
